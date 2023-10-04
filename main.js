@@ -36,7 +36,7 @@ class UBahnInfo {
     getDepartureTimes(vehicleName) {
         const stopEvents = this.data.stopEvents || [];
         const departureTimes = [];
-
+//Test
         for (let event of stopEvents) {
             const transportationName = event.transportation && event.transportation.disassembledName;
             if (transportationName === vehicleName) {

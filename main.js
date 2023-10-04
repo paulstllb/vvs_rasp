@@ -1,7 +1,7 @@
 const BASE_URL = "https://www3.vvs.de/mngvvs/XML_DM_REQUEST?";
 const fs  = require('fs');
 const apiUrl = retrieveStationData(6503,0)
-
+console.log(apiUrl);
 fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
@@ -13,6 +13,7 @@ fetch(apiUrl)
     console.log(daata.getDepartureTimes('U2'))
     console.log(daata.getDepartureTimes('U29'))
     console.log(daata.getDepartureTimes('91'))
+    
     ausgabe();
   })
   .catch(error => {
@@ -40,7 +41,7 @@ class UBahnInfo {
         for (let event of stopEvents) {
             const transportationName = event.transportation && event.transportation.disassembledName;
             if (transportationName === vehicleName) {
-                departureTimes.push(event.departureTimePlanned);
+                departureTimes.push(event.departureTimeEstimated);
             }
         }
 
@@ -68,8 +69,9 @@ function retrieveStationData(stationId, offset) {
         url += `&itdDateDay=` + d.getDate().toString();
         url += `&itdTimeHour=` + d.getHours().toString();
         url += `&itdTimeMinute=` + d.getMinutes().toString();
-         
+        
     }
+    
     return url;
     
 }

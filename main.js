@@ -3,7 +3,7 @@ const fs  = require('fs');
 const LCD = require('raspberrypi-liquid-crystal');
 const lcd = new LCD( 1, 0x27, 16, 2 );
 lcd.beginSync();
-setInterval(()=>update(),1000*20);
+setInterval(()=>update(),1000*10);
 
 function update(){
 const apiUrl = retrieveStationData(6503,0)

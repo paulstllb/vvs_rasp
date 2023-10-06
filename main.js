@@ -16,7 +16,8 @@ fetch(apiUrl)
     fs.writeFile('./test.json',JSON.stringify(data),()=>{})
     let daata = new UBahnInfo(data);
     let newArray = daata.getDepartureTimes('U2').concat(daata.getDepartureTimes('U29'),daata.getDepartureTimes('91'))
-    let DatenArray = newArray.sort((a,b)=>a[1]-b[1]);
+    let DatennArray = newArray.sort((a,b)=>a[1]-b[1]);
+    let DatenArray = DatennArray.slice(0,2);
     lcd.clearSync();
     lcd.printSync(DatenArray[0][0].toString()+"  "+DatenArray[0][1].getHours().toString()+":"+DatenArray[0][1].getMinutes().toString()+"  "+DatenArray[0][2].toString());
     lcd.setCursorSync(0, 1);

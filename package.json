@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "adafruit-i2c-lcd": "^2.0.0",
+    "i2c-bus": "^5.2.3",
+    "raspberrypi-liquid-crystal": "^1.19.0",
     "request": "^2.88.2"
   }
 }

@@ -1,8 +1,6 @@
 const BASE_URL = "https://www3.vvs.de/mngvvs/XML_DM_REQUEST?";
 const fs  = require('fs');
-const apiUrl = retrieveStationData(6503,0) 
-//6503 BOtnang
-//5006118 HBF
+const apiUrl = retrieveStationData(6503,0)
 
 fetch(apiUrl)
   .then(response => response.json())
@@ -32,15 +30,16 @@ class UBahnInfo {
     getDepartureTimes(vehicleName) {
         const stopEvents = this.data.stopEvents || [];
         const departureTimes = [];
+        const departureEstimated=[]
 
         for (let event of stopEvents) {
             const transportationName = event.transportation && event.transportation.disassembledName;
             if (transportationName === vehicleName) {
-                departureTimes.push(event.departureTimePlanned);
+                departureTimes.push([event.departureTimePlanned, event.departureTimeBaseTimetable]);
             }
         }
 
-        return departureTimes.map(d=>[vehicleName,new Date(d) ]);
+        return departureTimes.map(d=>[vehicleName,new Date(d[0]), new Date(d[0])-new Date(d[1]) ]);
     }
 }
 

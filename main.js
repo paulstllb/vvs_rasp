@@ -82,7 +82,7 @@ function retrieveStationData(stationId, offset) {
         url += `&itdDateMonth=` + (d.getMonth()+1).toString();
         
         url += `&itdDateDay=` + d.getDate().toString();
-        url += `&itdTimeHour=` + d.getHours().toString();
+        url += `&itdTimeHour=` + (d.getHours()+2).toString();
         url += `&itdTimeMinute=` + d.getMinutes().toString();
         
     }
